@@ -1291,7 +1291,9 @@ class ElfObjectFile : public ObjectFile {
     }
 
     // No build id section found.
-    return std::string();
+    // return std::string();
+    // (100pah) When there is no build id, enable to also use --debug-file (but only for single input)
+    return std::string("__default_build_id_only_for_single_file__");
   }
 
   void ProcessFile(const std::vector<RangeSink*>& sinks) const override {
